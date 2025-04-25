@@ -2,7 +2,6 @@
 
 #include "webserv.hpp"
 
-
 class Response{
     private:
         std::string formData;

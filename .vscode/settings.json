@@ -87,5 +87,6 @@
         "set": "cpp",
         "cfenv": "cpp",
         "typeindex": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }

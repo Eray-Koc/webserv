@@ -39,10 +39,10 @@ std::vector<Server> parse_config(const std::string& filename)
 		{
             if (current_server.port == -1)
 			{
-                current_server.port = 80; // NGINX varsayılanı
+                current_server.port = 80;
             }
             if (current_server.host.empty()) {
-                current_server.host = "0.0.0.0"; // NGINX varsayılanı
+                current_server.host = "0.0.0.0";
             }
             in_server_block = false;
             servers.push_back(current_server);

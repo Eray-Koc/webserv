@@ -21,6 +21,7 @@
 #include <iomanip>
 #include <dirent.h>
 #include "config.hpp"
+#include <algorithm>
 
 
 static const std::string methods[3] = {"GET", "POST", "DELETE"};

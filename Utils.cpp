@@ -1,5 +1,7 @@
 #include "webserv.hpp"
 #include "Utils.hpp"
+#include <sys/wait.h>
+
 
 std::string Utils::intToString(int num)
 {
@@ -142,15 +144,15 @@ std::string Utils::readFile(const std::string& fileName,
 
 
 bool Utils::wait_with_timeout(pid_t pid, int timeout_seconds) {
-    std::time_t start = std::time(NULL);
-    
+    time_t start = time(NULL);
+
     while (true) {
         pid_t result = waitpid(pid, NULL, WNOHANG);
         if (result == pid)
             return true;
         else if (result == -1)
             return false;
-        if (std::time(NULL) - start >= timeout_seconds)
+        if (time(NULL) - start >= timeout_seconds)
             break;
     }
 

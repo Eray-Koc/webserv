@@ -2,10 +2,16 @@
 #include "WebServer.hpp"
 
 WebServer *g_server = NULL;
+std::vector<Server> servers;
 
 void ServerKill(int sig) {
     (void) sig;
     delete g_server;
+    for (int i = 0; i < servers.size(); i++)
+    {
+        delete &servers[i];
+    }
+    
     std::cout << "\nServer Killed!" << std::endl;
     exit(1);
 }
@@ -15,7 +21,7 @@ int main(int ac, char **av)
     if (ac == 2)
     {
         try {
-            std::vector<Server> servers = parse_config(av[1]);
+            servers = parse_config(av[1]);
             
             // print_servers(servers);
             if (servers.size() == 0)
